@@ -88,7 +88,6 @@
             display: block;
         }
 
-        /* Renamed for consistency */
         .save-button-container {
             text-align: center;
             margin-top: 40px;
@@ -144,7 +143,6 @@
             animation: fadeIn 0.3s;
         }
 
-        /* --- STYLES FOR VIDEO LINK --- */
         .video-link-container {
             background: #f0f4ff;
             border-radius: 15px;
@@ -179,10 +177,7 @@
         .video-link-container a:hover {
             background: #5a6dcf;
         }
-        /* --- END OF VIDEO LINK STYLES --- */
-
-
-        /* --- NEW STYLES FOR DEFINITIONS --- */
+        
         .definitions-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -211,7 +206,6 @@
             font-size: 15px;
             line-height: 1.5;
         }
-        /* --- END OF NEW STYLES --- */
         
         .game-eval-container {
             display: grid;
@@ -450,12 +444,12 @@
         </div>
         
         <div class="tabs">
-            <button class="tab active" onclick="showSection('intro', this)">1. Introduction</button>
-            <button class="tab" onclick="showSection('principles', this)">2. Design Principles</button>
-            <button class="tab" onclick="showSection('evaluation', this)">3. Game Evaluation</button>
-            <button class="tab" onclick="showSection('collaboration', this)">4. Peer Comparison</button>
-            <button class="tab" onclick="showSection('portfolio', this)">5. Portfolio Planning</button>
-            <button class="tab" onclick="showSection('assessment', this)">6. Knowledge Check</button>
+            <button class="tab active" data-section="intro">1. Introduction</button>
+            <button class="tab" data-section="principles">2. Design Principles</button>
+            <button class="tab" data-section="evaluation">3. Game Evaluation</button>
+            <button class="tab" data-section="collaboration">4. Peer Comparison</button>
+            <button class="tab" data-section="portfolio">5. Portfolio Planning</button>
+            <button class="tab" data-section="assessment">6. Knowledge Check</button>
         </div>
         
         <div id="intro" class="content-section active">
@@ -880,288 +874,261 @@
         Time: <span id="time-display">15:00</span>
     </div>
 
-    <audio id="buzzer" src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4LjQ1LjEwMAAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1hZAAAAAAAAMQCgSTQoFAwARgAAAAFBWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaW-..//uQxAAAAAAAAANaWzRROqgBAKAyCoYdihk2/gSgTvwFp//yTEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV-....</audio>
+    <audio id="buzzer" src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4LjQ1LjEwMAAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1hZAAAAAAAAMQCgSTQoFAwARgAAAAFBWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaW-..//uQxAAAAAAAAANaWzRROqgBAKAyCoYdihk2/wSgTvwFp//yTEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV....</audio>
     
     <script>
-        // --- DATA STORAGE & STATE MANAGEMENT ---
-        let gameEvaluations = {};
-        let currentSection = 'intro';
-        let progress = 0;
-        let correctAnswers = 0;
-        
-        // --- NEW TIMER FUNCTIONALITY ---
-        let timerInterval = null;
-        const TIME_LIMIT = 15 * 60; // 15 minutes in seconds
-        const buzzer = document.getElementById('buzzer');
-        // Object to hold the time remaining for each section
-        let sectionTimers = {
-            intro: TIME_LIMIT,
-            principles: TIME_LIMIT,
-            evaluation: TIME_LIMIT,
-            collaboration: TIME_LIMIT,
-            portfolio: TIME_LIMIT,
-            assessment: TIME_LIMIT
-        };
+        // --- Code wrapped in DOMContentLoaded to ensure HTML and libraries are loaded before script runs ---
+        document.addEventListener('DOMContentLoaded', () => {
 
-        /**
-         * Starts a countdown timer for a given section.
-         * @param {string} sectionId - The ID of the section to start the timer for.
-         */
-        function startSectionTimer(sectionId) {
-            // Clear any previous timer to prevent multiple timers running
-            if (timerInterval) {
-                clearInterval(timerInterval);
-            }
+            // --- DATA STORAGE & STATE MANAGEMENT ---
+            let gameEvaluations = {};
+            let currentSection = 'intro';
+            let progress = 0;
+            let correctAnswers = 0;
+            
+            // --- TIMER FUNCTIONALITY ---
+            let timerInterval = null;
+            const TIME_LIMIT = 15 * 60; // 15 minutes in seconds
+            const buzzer = document.getElementById('buzzer');
+            // Object to hold the time remaining for each section
+            let sectionTimers = {
+                intro: TIME_LIMIT,
+                principles: TIME_LIMIT,
+                evaluation: TIME_LIMIT,
+                collaboration: TIME_LIMIT,
+                portfolio: TIME_LIMIT,
+                assessment: TIME_LIMIT
+            };
 
-            const timeDisplay = document.getElementById('time-display');
-            let timeRemaining = sectionTimers[sectionId];
+            /**
+             * Starts a countdown timer for a given section.
+             * @param {string} sectionId - The ID of the section to start the timer for.
+             */
+            function startSectionTimer(sectionId) {
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                }
 
-            // Update display immediately
-            const initialMinutes = Math.floor(timeRemaining / 60);
-            const initialSeconds = timeRemaining % 60;
-            timeDisplay.textContent = `${initialMinutes}:${initialSeconds.toString().padStart(2, '0')}`;
+                const timeDisplay = document.getElementById('time-display');
+                let timeRemaining = sectionTimers[sectionId];
 
-            // The main timer loop, runs every second
-            timerInterval = setInterval(() => {
-                if (timeRemaining > 0) {
-                    timeRemaining--;
-                    sectionTimers[sectionId] = timeRemaining; // Save the new remaining time
+                const updateDisplay = () => {
                     const minutes = Math.floor(timeRemaining / 60);
                     const seconds = timeRemaining % 60;
                     timeDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-                } else {
-                    clearInterval(timerInterval);
-                    timeDisplay.textContent = "Time's up!";
-                    buzzer.play();
-                }
-            }, 1000);
-        }
+                };
 
-        // --- CORE PAGE NAVIGATION ---
-        /**
-         * Switches the visible content section and updates the active tab.
-         * @param {string} sectionId - The ID of the section to display.
-         * @param {HTMLElement} tabElement - The tab button that was clicked.
-         */
-        function showSection(sectionId, tabElement) {
-            // Hide all content sections
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Deactivate all tabs
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Show the selected section
-            document.getElementById(sectionId).classList.add('active');
+                updateDisplay(); // Update display immediately
 
-            // Activate the clicked tab
-            tabElement.classList.add('active');
-            
-            // Update the progress bar
-            updateProgress(sectionId);
-            currentSection = sectionId;
-            
-            // Start the timer for the new section
-            startSectionTimer(sectionId);
-        }
-        
-        // --- UI & INTERACTIVITY ---
-        /**
-         * Updates the progress bar based on the current section.
-         * @param {string} section - The ID of the current active section.
-         */
-        function updateProgress(section) {
-            const sections = ['intro', 'principles', 'evaluation', 'collaboration', 'portfolio', 'assessment'];
-            const index = sections.indexOf(section);
-            progress = Math.round(((index + 1) / sections.length) * 100);
-            
-            const progressBar = document.getElementById('progress');
-            progressBar.style.width = progress + '%';
-            progressBar.textContent = progress + '%';
-        }
-        
-        /**
-         * Toggles the expanded view of a principle card.
-         * @param {HTMLElement} card - The principle card element.
-         */
-        function togglePrinciple(card) {
-            card.classList.toggle('expanded');
-        }
-        
-        // --- GAME EVALUATION LOGIC ---
-        /**
-         * Saves a student's evaluation for a game.
-         * @param {string} game - The name of the game (e.g., 'tetris').
-         * @param {string} criterion - The evaluation metric (e.g., 'mechanics').
-         * @param {string} value - The score given.
-         */
-        function saveEvaluation(game, criterion, value) {
-            if (!gameEvaluations[game]) {
-                gameEvaluations[game] = {};
+                timerInterval = setInterval(() => {
+                    if (timeRemaining > 0) {
+                        timeRemaining--;
+                        sectionTimers[sectionId] = timeRemaining;
+                        updateDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        timeDisplay.textContent = "Time's up!";
+                        buzzer.play();
+                    }
+                }, 1000);
             }
-            gameEvaluations[game][criterion] = value;
-            updateCollaborationSummary();
-        }
-        
-        /**
-         * Generates and displays a summary of all game evaluations.
-         */
-        function generateSummary() {
-            let summary = '<h3>Your Evaluation Summary:</h3><ul>';
-            for (const game in gameEvaluations) {
-                const eval = gameEvaluations[game];
-                const total = (parseInt(eval.mechanics || 0) + parseInt(eval.aesthetics || 0) + parseInt(eval.usability || 0));
-                const count = (eval.mechanics ? 1 : 0) + (eval.aesthetics ? 1 : 0) + (eval.usability ? 1 : 0);
-                const avg = count > 0 ? total / count : 0;
+
+            /**
+             * Switches the visible content section and updates the active tab.
+             * @param {string} sectionId - The ID of the section to display.
+             */
+            function showSection(sectionId) {
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
                 
-                summary += `<li><strong>${game.charAt(0).toUpperCase() + game.slice(1)}:</strong> `;
-                summary += `Average Score: ${avg.toFixed(1)}/5`;
-                summary += ` (M:${eval.mechanics || 'N/A'}, A:${eval.aesthetics || 'N/A'}, U:${eval.usability || 'N/A'})</li>`;
-            }
-            summary += '</ul>';
-            document.getElementById('evaluation-summary').innerHTML = summary;
-        }
-
-        /**
-         * Updates the summary in the "Peer Comparison" section.
-         */
-        function updateCollaborationSummary() {
-            let summary = '<ul>';
-            for (const game in gameEvaluations) {
-                const eval = gameEvaluations[game];
-                summary += `<li>${game}: M:${eval.mechanics || '-'}, A:${eval.aesthetics || '-'}, U:${eval.usability || '-'}</li>`;
-            }
-            summary += '</ul>';
-            document.getElementById('your-eval-summary').innerHTML = summary;
-        }
-        
-        // --- QUIZ FUNCTIONALITY ---
-        /**
-         * Shows feedback for the introductory "quick think" question.
-         */
-        function selectOption(option, questionId) {
-            document.getElementById(questionId + '-feedback').style.display = 'block';
-        }
-        
-        /**
-         * Checks a quiz answer, provides feedback, and locks the question.
-         * @param {HTMLElement} option - The label element of the chosen option.
-         * @param {boolean} isCorrect - Whether the chosen option is correct.
-         */
-        function checkAnswer(option, isCorrect) {
-            const questionName = option.querySelector('input[type="radio"]').name;
-            const allRadiosInGroup = document.querySelectorAll(`input[name="${questionName}"]`);
-
-            // Check if question has been answered already by checking if the first option is disabled
-            if (allRadiosInGroup[0].disabled) {
-                return;
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                document.getElementById(sectionId).classList.add('active');
+                document.querySelector(`.tab[data-section="${sectionId}"]`).classList.add('active');
+                
+                updateProgress(sectionId);
+                currentSection = sectionId;
+                
+                startSectionTimer(sectionId);
             }
             
-            if (isCorrect) {
-                option.classList.add('correct');
-                correctAnswers++;
-            } else {
-                option.classList.add('incorrect');
+            // --- UI & INTERACTIVITY ---
+            /**
+             * Updates the progress bar based on the current section.
+             * @param {string} section - The ID of the current active section.
+             */
+            function updateProgress(section) {
+                const sections = ['intro', 'principles', 'evaluation', 'collaboration', 'portfolio', 'assessment'];
+                const index = sections.indexOf(section);
+                progress = Math.round(((index + 1) / sections.length) * 100);
+                
+                const progressBar = document.getElementById('progress');
+                progressBar.style.width = progress + '%';
+                progressBar.textContent = progress + '%';
             }
+            
+            // Make functions globally accessible so inline HTML handlers can call them
+            window.togglePrinciple = (card) => {
+                card.classList.toggle('expanded');
+            };
+            
+            // --- GAME EVALUATION LOGIC ---
+            window.saveEvaluation = (game, criterion, value) => {
+                if (!gameEvaluations[game]) {
+                    gameEvaluations[game] = {};
+                }
+                gameEvaluations[game][criterion] = value;
+                updateCollaborationSummary();
+            };
+            
+            window.generateSummary = () => {
+                let summary = '<h3>Your Evaluation Summary:</h3><ul>';
+                for (const game in gameEvaluations) {
+                    const evalData = gameEvaluations[game];
+                    const mechanics = parseInt(evalData.mechanics || 0);
+                    const aesthetics = parseInt(evalData.aesthetics || 0);
+                    const usability = parseInt(evalData.usability || 0);
+                    
+                    const total = mechanics + aesthetics + usability;
+                    const count = (evalData.mechanics ? 1 : 0) + (evalData.aesthetics ? 1 : 0) + (evalData.usability ? 1 : 0);
+                    const avg = count > 0 ? total / count : 0;
+                    
+                    summary += `<li><strong>${game.charAt(0).toUpperCase() + game.slice(1)}:</strong> `;
+                    summary += `Average Score: ${avg.toFixed(1)}/5`;
+                    summary += ` (M:${evalData.mechanics || 'N/A'}, A:${evalData.aesthetics || 'N/A'}, U:${evalData.usability || 'N/A'})</li>`;
+                }
+                summary += '</ul>';
+                document.getElementById('evaluation-summary').innerHTML = summary;
+            };
 
-            // Disable all radio buttons in this group to prevent changing the answer
-            allRadiosInGroup.forEach(radio => {
-                radio.disabled = true;
-            });
-        }
-        
-        /**
-         * Calculates and displays the final quiz score.
-         */
-        function calculateScore() {
-            const totalQuestions = document.querySelectorAll('#assessment .knowledge-check').length;
-            const percentage = Math.round((correctAnswers / totalQuestions) * 100);
-            let feedback = '';
-            if (percentage >= 75) {
-                feedback = '🎉 Excellent work!';
-            } else if (percentage >= 50) {
-                feedback = '👍 Good effort! Review the principles again.';
-            } else {
-                feedback = '📚 Keep studying! You\'re getting there!';
+            function updateCollaborationSummary() {
+                let summary = '<ul>';
+                if (Object.keys(gameEvaluations).length === 0) {
+                     summary = '<p>Complete the game evaluation section first!</p>';
+                } else {
+                    for (const game in gameEvaluations) {
+                        const evalData = gameEvaluations[game];
+                        summary += `<li>${game}: M:${evalData.mechanics || '-'}, A:${evalData.aesthetics || '-'}, U:${evalData.usability || '-'}</li>`;
+                    }
+                    summary += '</ul>';
+                }
+                document.getElementById('your-eval-summary').innerHTML = summary;
             }
+            
+            // --- QUIZ FUNCTIONALITY ---
+            window.selectOption = (option, questionId) => {
+                document.getElementById(questionId + '-feedback').style.display = 'block';
+            };
+            
+            window.checkAnswer = (option, isCorrect) => {
+                const questionName = option.querySelector('input[type="radio"]').name;
+                const allRadiosInGroup = document.querySelectorAll(`input[name="${questionName}"]`);
 
-            document.getElementById('score-display').innerHTML = 
-                `Your Score: ${correctAnswers}/${totalQuestions} (${percentage}%)<br>${feedback}`;
-        }
-        
-        // --- PORTFOLIO & PDF ---
-        /**
-         * Simulates saving portfolio data.
-         */
-        function savePortfolio() {
-            alert('Portfolio saved!');
-        }
-        
-        /**
-         * Generates and saves a PDF of a specific content section.
-         * @param {string} sectionId - The ID of the section to save.
-         * @param {HTMLElement} buttonElement - The button that was clicked.
-         */
-        function saveSectionAsPDF(sectionId, buttonElement) {
-            const { jsPDF } = window.jspdf;
-            const sectionElement = document.getElementById(sectionId);
-            const sectionTitle = sectionElement.querySelector('h2').innerText;
-
-            // Give feedback to the user
-            const originalButtonText = buttonElement.innerHTML;
-            buttonElement.innerHTML = 'Generating PDF...';
-            buttonElement.disabled = true;
-
-            html2canvas(sectionElement, { scale: 2, useCORS: true }).then(canvas => {
-                const imgData = canvas.toDataURL('image/png');
-                const pdf = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
-
-                const pdfWidth = pdf.internal.pageSize.getWidth();
-                const canvasWidth = canvas.width;
-                const canvasHeight = canvas.height;
-                const ratio = canvasWidth / pdfWidth;
-                const pageHeight = canvasHeight / ratio;
-                const pdfHeight = pdf.internal.pageSize.getHeight();
-
-                let heightLeft = pageHeight;
-                let position = 0;
-
-                // Add the first page
-                pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pageHeight);
-                heightLeft -= pdfHeight;
-
-                // Add new pages if the content overflows
-                while (heightLeft > 0) {
-                    position = -pdfHeight * (Math.abs(position / pdfHeight) + 1);
-                    pdf.addPage();
-                    pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pageHeight);
-                    heightLeft -= pdfHeight;
+                if (allRadiosInGroup[0].disabled) {
+                    return;
+                }
+                
+                if (isCorrect) {
+                    option.classList.add('correct');
+                    correctAnswers++;
+                } else {
+                    option.classList.add('incorrect');
                 }
 
-                pdf.save(`${sectionTitle.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`);
+                allRadiosInGroup.forEach(radio => {
+                    radio.disabled = true;
+                    // Make parent label unclickable
+                    radio.parentElement.style.pointerEvents = 'none';
+                });
+            };
+            
+            window.calculateScore = () => {
+                const totalQuestions = document.querySelectorAll('#assessment .knowledge-check').length;
+                const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+                let feedback = '';
+                if (percentage >= 75) {
+                    feedback = '🎉 Excellent work!';
+                } else if (percentage >= 50) {
+                    feedback = '👍 Good effort! Review the principles again.';
+                } else {
+                    feedback = '📚 Keep studying! You\'re getting there!';
+                }
 
-                // Restore the button
-                buttonElement.innerHTML = originalButtonText;
-                buttonElement.disabled = false;
-            }).catch(err => {
-                console.error("Error generating PDF:", err);
-                alert("Sorry, there was an error creating the PDF.");
-                buttonElement.innerHTML = originalButtonText;
-                buttonElement.disabled = false;
+                document.getElementById('score-display').innerHTML = 
+                    `Your Score: ${correctAnswers}/${totalQuestions} (${percentage}%)<br>${feedback}`;
+            };
+            
+            // --- PORTFOLIO & PDF ---
+            window.savePortfolio = () => {
+                alert('Portfolio saved!');
+            };
+            
+            /**
+             * ✅ FIXED: Generates and saves a PDF of a specific content section.
+             * The original code had an issue calling the jsPDF library.
+             * This version correctly initializes the library.
+             */
+            window.saveSectionAsPDF = (sectionId, buttonElement) => {
+                // Correctly get the jsPDF constructor from the global jspdf object
+                const { jsPDF } = window.jspdf; 
+                const sectionElement = document.getElementById(sectionId);
+                const sectionTitle = sectionElement.querySelector('h2').innerText;
+
+                const originalButtonText = buttonElement.innerHTML;
+                buttonElement.innerHTML = 'Generating PDF...';
+                buttonElement.disabled = true;
+
+                html2canvas(sectionElement, { scale: 2, useCORS: true }).then(canvas => {
+                    const imgData = canvas.toDataURL('image/png');
+                    const pdf = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
+
+                    const pdfWidth = pdf.internal.pageSize.getWidth();
+                    const pdfHeight = pdf.internal.pageSize.getHeight();
+                    const canvasWidth = canvas.width;
+                    const canvasHeight = canvas.height;
+                    const ratio = canvasWidth / pdfWidth;
+                    const imgHeight = canvasHeight / ratio;
+
+                    let heightLeft = imgHeight;
+                    let position = 0;
+
+                    pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, imgHeight);
+                    heightLeft -= pdfHeight;
+
+                    while (heightLeft > 0) {
+                        position = position - pdfHeight;
+                        pdf.addPage();
+                        pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, imgHeight);
+                        heightLeft -= pdfHeight;
+                    }
+
+                    pdf.save(`${sectionTitle.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`);
+
+                    buttonElement.innerHTML = originalButtonText;
+                    buttonElement.disabled = false;
+                }).catch(err => {
+                    console.error("Error generating PDF:", err);
+                    alert("Sorry, there was an error creating the PDF.");
+                    buttonElement.innerHTML = originalButtonText;
+                    buttonElement.disabled = false;
+                });
+            };
+            
+            // --- INITIALIZATION ---
+            // Set up event listeners for tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const sectionId = tab.getAttribute('data-section');
+                    showSection(sectionId);
+                });
             });
-        }
-        
-        // --- INITIALIZATION ---
-        /**
-         * Runs when the page is fully loaded.
-         */
-        window.onload = function() {
-            // Start the timer for the default 'intro' section
-            startSectionTimer('intro');
-        };
+
+            // Initial setup on page load
+            showSection('intro'); // Show the first section and start its timer
+        });
     </script>
 </body>
 </html>
