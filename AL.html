@@ -255,9 +255,9 @@
         
         <!-- Section for downloading the PDF -->
         <div class="download-section">
-            <h2>Download Your Work</h2>
+            <h2>Save Your Work</h2>
             <p>When you have completed all activities, click the button below to save all your responses as a PDF.</p>
-            <button id="download-pdf-btn" class="action-btn" style="background-color: #28a745;">Download Responses as PDF</button>
+            <button id="save-pdf-btn" class="action-btn" style="background-color: #28a745;">Save as PDF</button>
         </div>
 
     </div>
@@ -420,11 +420,16 @@
             clearInterval(timerInterval);
         }
 
-        // --- PDF DOWNLOAD LOGIC ---
-        document.getElementById('download-pdf-btn').addEventListener('click', function () {
+        // --- PDF SAVE LOGIC ---
+        document.getElementById('save-pdf-btn').addEventListener('click', function () {
             const { jsPDF } = window.jspdf;
             const content = document.getElementById('capture-area');
             const pdfButton = this;
+            
+            // Give feedback to the user
+            const originalButtonText = pdfButton.innerHTML;
+            pdfButton.innerHTML = 'Generating PDF...';
+            pdfButton.disabled = true;
             
             // Hide the button to prevent it from appearing in the PDF
             pdfButton.style.visibility = 'hidden';
@@ -434,20 +439,9 @@
                 scale: 2, // Increase scale for better quality
                 useCORS: true,
                 onclone: (document) => {
-                    // This ensures textarea content is visible in the canvas
-                    const textareas = document.querySelectorAll('textarea');
-                    textareas.forEach(textarea => {
-                        const div = document.createElement('div');
-                        div.style.whiteSpace = 'pre-wrap';
-                        div.style.padding = '15px';
-                        div.style.border = '1px solid #ccc';
-                        div.style.borderRadius = '8px';
-                        div.style.fontFamily = "'Courier New', Courier, monospace";
-                        div.style.fontSize = "14px";
-                        div.style.minHeight = textarea.style.minHeight;
-                        div.textContent = textarea.value;
-                        textarea.parentNode.replaceChild(div, textarea);
-                    });
+                    // This function is called on the cloned document before rendering
+                    // We can make temporary changes here that only affect the PDF
+                    document.getElementById('save-pdf-btn').style.visibility = 'hidden';
                 }
             }).then(canvas => {
                 const imgData = canvas.toDataURL('image/png');
@@ -469,7 +463,7 @@
                 heightLeft -= pdfHeight;
 
                 while (heightLeft > 0) {
-                    position = -heightLeft;
+                    position = position - pdfHeight;
                     pdf.addPage();
                     pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, imgHeight);
                     heightLeft -= pdfHeight;
@@ -477,8 +471,17 @@
                 
                 pdf.save('game-design-responses.pdf');
 
-                // Show the button again
+                // Show the button again and restore text
                 pdfButton.style.visibility = 'visible';
+                pdfButton.innerHTML = originalButtonText;
+                pdfButton.disabled = false;
+            }).catch(err => {
+                console.error("Error generating PDF:", err);
+                alert("Sorry, there was an error creating the PDF.");
+                // Restore button state on error
+                pdfButton.style.visibility = 'visible';
+                pdfButton.innerHTML = originalButtonText;
+                pdfButton.disabled = false;
             });
         });
 
