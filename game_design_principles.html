@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Design Principles - Interactive Lesson</title>
     
+    <!-- External Libraries for PDF Generation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
@@ -460,16 +461,16 @@
                 <h3>🤔 Quick Think: What Makes a Good Game?</h3>
                 <p>Before we dive in, think about your favorite game. What makes it special?</p>
                 <div>
-                    <label class="quiz-option" onclick="selectOption(this, 'intro1')">
+                    <label class="quiz-option">
                         <input type="radio" name="intro1"> Amazing graphics and visuals
                     </label>
-                    <label class="quiz-option" onclick="selectOption(this, 'intro1')">
+                    <label class="quiz-option">
                         <input type="radio" name="intro1"> Engaging gameplay mechanics
                     </label>
-                    <label class="quiz-option" onclick="selectOption(this, 'intro1')">
+                    <label class="quiz-option">
                         <input type="radio" name="intro1"> Compelling story and characters
                     </label>
-                    <label class="quiz-option" onclick="selectOption(this, 'intro1')">
+                    <label class="quiz-option">
                         <input type="radio" name="intro1"> All of the above contribute
                     </label>
                 </div>
@@ -489,7 +490,7 @@
                 </ul>
             </div>
             <div class="save-button-container">
-                <button class="btn" onclick="saveSectionAsPDF('intro', this)">Save as PDF</button>
+                <button class="btn save-pdf-btn" data-section-id="intro">Save as PDF</button>
             </div>
         </div>
         
@@ -504,52 +505,52 @@
             </div>
 
             <div class="game-principles">
-                <div class="principle-card" onclick="togglePrinciple(this)">
+                <div class="principle-card">
                     <div class="icon">⚖️</div>
                     <h3>Balance</h3>
                     <p>Ensuring gameplay is fair and no single strategy dominates. Creates the perfect blend of difficulty and fairness.</p>
                 </div>
-                <div class="principle-card" onclick="togglePrinciple(this)">
+                <div class="principle-card">
                     <div class="icon">🎵</div>
                     <h3>Pacing</h3>
                     <p>Controlling rhythm and tempo to maintain engagement and prevent boredom or frustration.</p>
                 </div>
-                <div class="principle-card" onclick="togglePrinciple(this)">
+                <div class="principle-card">
                     <div class="icon">🎯</div>
                     <h3>Player Engagement</h3>
                     <p>Keeping players interested through challenges, rewards, and progression systems.</p>
                 </div>
-                <div class="principle-card" onclick="togglePrinciple(this)">
+                <div class="principle-card">
                     <div class="icon">💬</div>
                     <h3>Feedback Loops</h3>
                     <p>Providing clear, immediate responses to player actions to maintain engagement.</p>
                 </div>
-                <div class="principle-card" onclick="togglePrinciple(this)">
+                <div class="principle-card">
                     <div class="icon">🌊</div>
                     <h3>Flow</h3>
                     <p>Creating a state where players are fully absorbed, losing track of time.</p>
                 </div>
-                <div class="principle-card" onclick="togglePrinciple(this)">
+                <div class="principle-card">
                     <div class="icon">🔄</div>
                     <h3>Replayability</h3>
                     <p>Encouraging players to return through varied experiences and outcomes.</p>
                 </div>
-                <div class="principle-card" onclick="togglePrinciple(this)">
+                <div class="principle-card">
                     <div class="icon">🏆</div>
                     <h3>Reward Systems</h3>
                     <p>Motivating players through achievements, unlocks, and progression.</p>
                 </div>
-                <div class="principle-card" onclick="togglePrinciple(this)">
+                <div class="principle-card">
                     <div class="icon">⚡</div>
                     <h3>Challenge</h3>
                     <p>Gradually increasing difficulty to provide achievement and mastery.</p>
                 </div>
-                <div class="principle-card" onclick="togglePrinciple(this)">
+                <div class="principle-card">
                     <div class="icon">🎭</div>
                     <h3>Player Choice</h3>
                     <p>Allowing meaningful decisions that impact outcomes and story.</p>
                 </div>
-                <div class="principle-card" onclick="togglePrinciple(this)">
+                <div class="principle-card">
                     <div class="icon">✨</div>
                     <h3>Simplicity</h3>
                     <p>Making games easy to learn but potentially hard to master.</p>
@@ -560,22 +561,22 @@
                 <h3>🎯 Apply Your Knowledge</h3>
                 <p>Which principle is MOST important for keeping players coming back?</p>
                 <div>
-                    <label class="quiz-option" onclick="checkAnswer(this, false)">
+                    <label class="quiz-option" data-correct="false">
                         <input type="radio" name="principle-quiz"> Balance only
                     </label>
-                    <label class="quiz-option" onclick="checkAnswer(this, false)">
+                    <label class="quiz-option" data-correct="false">
                         <input type="radio" name="principle-quiz"> Graphics quality
                     </label>
-                    <label class="quiz-option" onclick="checkAnswer(this, true)">
+                    <label class="quiz-option" data-correct="true">
                         <input type="radio" name="principle-quiz"> A combination of multiple principles
                     </label>
-                    <label class="quiz-option" onclick="checkAnswer(this, false)">
+                    <label class="quiz-option" data-correct="false">
                         <input type="radio" name="principle-quiz"> Story alone
                     </label>
                 </div>
             </div>
             <div class="save-button-container">
-                <button class="btn" onclick="saveSectionAsPDF('principles', this)">Save as PDF</button>
+                <button class="btn save-pdf-btn" data-section-id="principles">Save as PDF</button>
             </div>
         </div>
         
@@ -606,17 +607,17 @@
                     <p><strong>Innovation:</strong> Simple yet addictive puzzle mechanics</p>
                     <div class="eval-form">
                         <label>Mechanics (1-5):
-                            <select onchange="saveEvaluation('tetris', 'mechanics', this.value)">
+                            <select data-game="tetris" data-criterion="mechanics">
                                 <option value="">Select</option><option value="5">5 - Excellent</option><option value="4">4 - Good</option><option value="3">3 - Average</option><option value="2">2 - Poor</option><option value="1">1 - Very Poor</option>
                             </select>
                         </label>
                         <label>Aesthetics (1-5):
-                            <select onchange="saveEvaluation('tetris', 'aesthetics', this.value)">
+                            <select data-game="tetris" data-criterion="aesthetics">
                                 <option value="">Select</option><option value="5">5 - Excellent</option><option value="4">4 - Good</option><option value="3">3 - Average</option><option value="2">2 - Poor</option><option value="1">1 - Very Poor</option>
                             </select>
                         </label>
                         <label>Usability (1-5):
-                            <select onchange="saveEvaluation('tetris', 'usability', this.value)">
+                            <select data-game="tetris" data-criterion="usability">
                                 <option value="">Select</option><option value="5">5 - Excellent</option><option value="4">4 - Good</option><option value="3">3 - Average</option><option value="2">2 - Poor</option><option value="1">1 - Very Poor</option>
                             </select>
                         </label>
@@ -629,17 +630,17 @@
                     <p><strong>Innovation:</strong> First game with a mascot character</p>
                     <div class="eval-form">
                         <label>Mechanics (1-5):
-                            <select onchange="saveEvaluation('pacman', 'mechanics', this.value)">
+                            <select data-game="pacman" data-criterion="mechanics">
                                 <option value="">Select</option><option value="5">5 - Excellent</option><option value="4">4 - Good</option><option value="3">3 - Average</option><option value="2">2 - Poor</option><option value="1">1 - Very Poor</option>
                             </select>
                         </label>
                         <label>Aesthetics (1-5):
-                            <select onchange="saveEvaluation('pacman', 'aesthetics', this.value)">
+                            <select data-game="pacman" data-criterion="aesthetics">
                                 <option value="">Select</option><option value="5">5 - Excellent</option><option value="4">4 - Good</option><option value="3">3 - Average</option><option value="2">2 - Poor</option><option value="1">1 - Very Poor</option>
                             </select>
                         </label>
                         <label>Usability (1-5):
-                            <select onchange="saveEvaluation('pacman', 'usability', this.value)">
+                            <select data-game="pacman" data-criterion="usability">
                                 <option value="">Select</option><option value="5">5 - Excellent</option><option value="4">4 - Good</option><option value="3">3 - Average</option><option value="2">2 - Poor</option><option value="1">1 - Very Poor</option>
                             </select>
                         </label>
@@ -652,17 +653,17 @@
                     <p><strong>Innovation:</strong> Growth mechanics and spatial awareness</p>
                     <div class="eval-form">
                         <label>Mechanics (1-5):
-                            <select onchange="saveEvaluation('snake', 'mechanics', this.value)">
+                            <select data-game="snake" data-criterion="mechanics">
                                 <option value="">Select</option><option value="5">5 - Excellent</option><option value="4">4 - Good</option><option value="3">3 - Average</option><option value="2">2 - Poor</option><option value="1">1 - Very Poor</option>
                             </select>
                         </label>
                         <label>Aesthetics (1-5):
-                            <select onchange="saveEvaluation('snake', 'aesthetics', this.value)">
+                            <select data-game="snake" data-criterion="aesthetics">
                                 <option value="">Select</option><option value="5">5 - Excellent</option><option value="4">4 - Good</option><option value="3">3 - Average</option><option value="2">2 - Poor</option><option value="1">1 - Very Poor</option>
                             </select>
                         </label>
                         <label>Usability (1-5):
-                            <select onchange="saveEvaluation('snake', 'usability', this.value)">
+                            <select data-game="snake" data-criterion="usability">
                                 <option value="">Select</option><option value="5">5 - Excellent</option><option value="4">4 - Good</option><option value="3">3 - Average</option><option value="2">2 - Poor</option><option value="1">1 - Very Poor</option>
                             </select>
                         </label>
@@ -675,17 +676,17 @@
                     <p><strong>Innovation:</strong> First shooter with increasing difficulty</p>
                     <div class="eval-form">
                         <label>Mechanics (1-5):
-                            <select onchange="saveEvaluation('space', 'mechanics', this.value)">
+                            <select data-game="space" data-criterion="mechanics">
                                 <option value="">Select</option><option value="5">5 - Excellent</option><option value="4">4 - Good</option><option value="3">3 - Average</option><option value="2">2 - Poor</option><option value="1">1 - Very Poor</option>
                             </select>
                         </label>
                         <label>Aesthetics (1-5):
-                            <select onchange="saveEvaluation('space', 'aesthetics', this.value)">
+                            <select data-game="space" data-criterion="aesthetics">
                                 <option value="">Select</option><option value="5">5 - Excellent</option><option value="4">4 - Good</option><option value="3">3 - Average</option><option value="2">2 - Poor</option><option value="1">1 - Very Poor</option>
                             </select>
                         </label>
                         <label>Usability (1-5):
-                            <select onchange="saveEvaluation('space', 'usability', this.value)">
+                            <select data-game="space" data-criterion="usability">
                                 <option value="">Select</option><option value="5">5 - Excellent</option><option value="4">4 - Good</option><option value="3">3 - Average</option><option value="2">2 - Poor</option><option value="1">1 - Very Poor</option>
                             </select>
                         </label>
@@ -693,10 +694,10 @@
                 </div>
             </div>
             
-            <button class="btn" onclick="generateSummary()">Generate My Evaluation Summary</button>
+            <button class="btn" id="generate-summary-btn">Generate My Evaluation Summary</button>
             <div id="evaluation-summary" style="margin-top: 20px;"></div>
             <div class="save-button-container">
-                <button class="btn" onclick="saveSectionAsPDF('evaluation', this)">Save as PDF</button>
+                <button class="btn save-pdf-btn" data-section-id="evaluation">Save as PDF</button>
             </div>
         </div>
         
@@ -743,7 +744,7 @@
                 </ul>
             </div>
             <div class="save-button-container">
-                <button class="btn" onclick="saveSectionAsPDF('collaboration', this)">Save as PDF</button>
+                <button class="btn save-pdf-btn" data-section-id="collaboration">Save as PDF</button>
             </div>
         </div>
         
@@ -776,10 +777,10 @@
                     <h3>🔄 Design Principles Applied</h3>
                     <textarea placeholder="Which design principles will you focus on and why?"></textarea>
                 </div>
-                <button class="btn" onclick="savePortfolio()">Save Portfolio Plan</button>
+                <button class="btn" id="save-portfolio-btn">Save Portfolio Plan</button>
             </div>
             <div class="save-button-container">
-                <button class="btn" onclick="saveSectionAsPDF('portfolio', this)">Save as PDF</button>
+                <button class="btn save-pdf-btn" data-section-id="portfolio">Save as PDF</button>
             </div>
         </div>
         
@@ -790,16 +791,16 @@
                 <h3>Question 1: Core Mechanics</h3>
                 <p>What are the five essential components of most games?</p>
                 <div>
-                    <label class="quiz-option" onclick="checkAnswer(this, false)">
+                    <label class="quiz-option" data-correct="false">
                         <input type="radio" name="q1"> Graphics, Sound, Story, Characters, Levels
                     </label>
-                    <label class="quiz-option" onclick="checkAnswer(this, true)">
+                    <label class="quiz-option" data-correct="true">
                         <input type="radio" name="q1"> Game World, Characteristics, Core Mechanic, Goal, Rewards/Challenges
                     </label>
-                    <label class="quiz-option" onclick="checkAnswer(this, false)">
+                    <label class="quiz-option" data-correct="false">
                         <input type="radio" name="q1"> Programming, Art, Music, Testing, Publishing
                     </label>
-                    <label class="quiz-option" onclick="checkAnswer(this, false)">
+                    <label class="quiz-option" data-correct="false">
                         <input type="radio" name="q1"> Players, Controllers, Screen, Console, Internet
                     </label>
                 </div>
@@ -809,16 +810,16 @@
                 <h3>Question 2: Design Principles</h3>
                 <p>Which principle ensures no single strategy dominates gameplay?</p>
                 <div>
-                    <label class="quiz-option" onclick="checkAnswer(this, true)">
+                    <label class="quiz-option" data-correct="true">
                         <input type="radio" name="q2"> Balance
                     </label>
-                    <label class="quiz-option" onclick="checkAnswer(this, false)">
+                    <label class="quiz-option" data-correct="false">
                         <input type="radio" name="q2"> Pacing
                     </label>
-                    <label class="quiz-option" onclick="checkAnswer(this, false)">
+                    <label class="quiz-option" data-correct="false">
                         <input type="radio" name="q2"> Flow
                     </label>
-                    <label class="quiz-option" onclick="checkAnswer(this, false)">
+                    <label class="quiz-option" data-correct="false">
                         <input type="radio" name="q2"> Immersion
                     </label>
                 </div>
@@ -828,16 +829,16 @@
                 <h3>Question 3: Accessibility</h3>
                 <p>Which is NOT a common accessibility feature in games?</p>
                 <div>
-                    <label class="quiz-option" onclick="checkAnswer(this, false)">
+                    <label class="quiz-option" data-correct="false">
                         <input type="radio" name="q3"> Colorblind modes
                     </label>
-                    <label class="quiz-option" onclick="checkAnswer(this, false)">
+                    <label class="quiz-option" data-correct="false">
                         <input type="radio" name="q3"> Customizable controls
                     </label>
-                    <label class="quiz-option" onclick="checkAnswer(this, true)">
+                    <label class="quiz-option" data-correct="true">
                         <input type="radio" name="q3"> Removing all challenge
                     </label>
-                    <label class="quiz-option" onclick="checkAnswer(this, false)">
+                    <label class="quiz-option" data-correct="false">
                         <input type="radio" name="q3"> Subtitles and visual cues
                     </label>
                 </div>
@@ -847,25 +848,25 @@
                 <h3>Question 4: Game Evolution</h3>
                 <p>What innovation did Pac-Man bring to gaming?</p>
                 <div>
-                    <label class="quiz-option" onclick="checkAnswer(this, false)">
+                    <label class="quiz-option" data-correct="false">
                         <input type="radio" name="q4"> First video game ever made
                     </label>
-                    <label class="quiz-option" onclick="checkAnswer(this, true)">
+                    <label class="quiz-option" data-correct="true">
                         <input type="radio" name="q4"> First game with a mascot character
                     </label>
-                    <label class="quiz-option" onclick="checkAnswer(this, false)">
+                    <label class="quiz-option" data-correct="false">
                         <input type="radio" name="q4"> First 3D graphics
                     </label>
-                    <label class="quiz-option" onclick="checkAnswer(this, false)">
+                    <label class="quiz-option" data-correct="false">
                         <input type="radio" name="q4"> First online multiplayer
                     </label>
                 </div>
             </div>
             
-            <button class="btn" onclick="calculateScore()">Calculate My Score</button>
+            <button class="btn" id="calculate-score-btn">Calculate My Score</button>
             <div id="score-display" style="margin-top: 20px; font-size: 24px; font-weight: bold; color: #667eea;"></div>
             <div class="save-button-container">
-                <button class="btn" onclick="saveSectionAsPDF('assessment', this)">Save as PDF</button>
+                <button class="btn save-pdf-btn" data-section-id="assessment">Save as PDF</button>
             </div>
         </div>
     </div>
@@ -874,12 +875,10 @@
         Time: <span id="time-display">15:00</span>
     </div>
 
-    <audio id="buzzer" src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4LjQ1LjEwMAAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1hZAAAAAAAAMQCgSTQoFAwARgAAAAFBWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaW-..//uQxAAAAAAAAANaWzRROqgBAKAyCoYdihk2/wSgTvwFp//yTEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV....</audio>
+    <audio id="buzzer" src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4LjQ1LjEwMAAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1hZAAAAAAAAMQCgSTQoFAwARgAAAAFBWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaW-..//uQxAAAAAAAAANaWzRROqgBAKAyCoYdihk2/SgTvwFp//yTEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV....</audio>
     
     <script>
-        // --- Code wrapped in DOMContentLoaded to ensure HTML and libraries are loaded before script runs ---
         document.addEventListener('DOMContentLoaded', () => {
-
             // --- DATA STORAGE & STATE MANAGEMENT ---
             let gameEvaluations = {};
             let currentSection = 'intro';
@@ -890,36 +889,23 @@
             let timerInterval = null;
             const TIME_LIMIT = 15 * 60; // 15 minutes in seconds
             const buzzer = document.getElementById('buzzer');
-            // Object to hold the time remaining for each section
             let sectionTimers = {
-                intro: TIME_LIMIT,
-                principles: TIME_LIMIT,
-                evaluation: TIME_LIMIT,
-                collaboration: TIME_LIMIT,
-                portfolio: TIME_LIMIT,
-                assessment: TIME_LIMIT
+                intro: TIME_LIMIT, principles: TIME_LIMIT, evaluation: TIME_LIMIT,
+                collaboration: TIME_LIMIT, portfolio: TIME_LIMIT, assessment: TIME_LIMIT
             };
 
-            /**
-             * Starts a countdown timer for a given section.
-             * @param {string} sectionId - The ID of the section to start the timer for.
-             */
+            // --- CORE FUNCTIONS ---
+            
             function startSectionTimer(sectionId) {
-                if (timerInterval) {
-                    clearInterval(timerInterval);
-                }
-
+                if (timerInterval) clearInterval(timerInterval);
                 const timeDisplay = document.getElementById('time-display');
                 let timeRemaining = sectionTimers[sectionId];
-
                 const updateDisplay = () => {
                     const minutes = Math.floor(timeRemaining / 60);
                     const seconds = timeRemaining % 60;
                     timeDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
                 };
-
-                updateDisplay(); // Update display immediately
-
+                updateDisplay();
                 timerInterval = setInterval(() => {
                     if (timeRemaining > 0) {
                         timeRemaining--;
@@ -933,82 +919,31 @@
                 }, 1000);
             }
 
-            /**
-             * Switches the visible content section and updates the active tab.
-             * @param {string} sectionId - The ID of the section to display.
-             */
             function showSection(sectionId) {
-                document.querySelectorAll('.content-section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                document.querySelectorAll('.tab').forEach(tab => {
-                    tab.classList.remove('active');
-                });
-                
+                document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+                document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
                 document.getElementById(sectionId).classList.add('active');
                 document.querySelector(`.tab[data-section="${sectionId}"]`).classList.add('active');
-                
                 updateProgress(sectionId);
                 currentSection = sectionId;
-                
                 startSectionTimer(sectionId);
             }
             
-            // --- UI & INTERACTIVITY ---
-            /**
-             * Updates the progress bar based on the current section.
-             * @param {string} section - The ID of the current active section.
-             */
             function updateProgress(section) {
                 const sections = ['intro', 'principles', 'evaluation', 'collaboration', 'portfolio', 'assessment'];
                 const index = sections.indexOf(section);
                 progress = Math.round(((index + 1) / sections.length) * 100);
-                
                 const progressBar = document.getElementById('progress');
-                progressBar.style.width = progress + '%';
-                progressBar.textContent = progress + '%';
+                progressBar.style.width = `${progress}%`;
+                progressBar.textContent = `${progress}%`;
             }
             
-            // Make functions globally accessible so inline HTML handlers can call them
-            window.togglePrinciple = (card) => {
-                card.classList.toggle('expanded');
-            };
-            
-            // --- GAME EVALUATION LOGIC ---
-            window.saveEvaluation = (game, criterion, value) => {
-                if (!gameEvaluations[game]) {
-                    gameEvaluations[game] = {};
-                }
-                gameEvaluations[game][criterion] = value;
-                updateCollaborationSummary();
-            };
-            
-            window.generateSummary = () => {
-                let summary = '<h3>Your Evaluation Summary:</h3><ul>';
-                for (const game in gameEvaluations) {
-                    const evalData = gameEvaluations[game];
-                    const mechanics = parseInt(evalData.mechanics || 0);
-                    const aesthetics = parseInt(evalData.aesthetics || 0);
-                    const usability = parseInt(evalData.usability || 0);
-                    
-                    const total = mechanics + aesthetics + usability;
-                    const count = (evalData.mechanics ? 1 : 0) + (evalData.aesthetics ? 1 : 0) + (evalData.usability ? 1 : 0);
-                    const avg = count > 0 ? total / count : 0;
-                    
-                    summary += `<li><strong>${game.charAt(0).toUpperCase() + game.slice(1)}:</strong> `;
-                    summary += `Average Score: ${avg.toFixed(1)}/5`;
-                    summary += ` (M:${evalData.mechanics || 'N/A'}, A:${evalData.aesthetics || 'N/A'}, U:${evalData.usability || 'N/A'})</li>`;
-                }
-                summary += '</ul>';
-                document.getElementById('evaluation-summary').innerHTML = summary;
-            };
-
             function updateCollaborationSummary() {
-                let summary = '<ul>';
+                let summary;
                 if (Object.keys(gameEvaluations).length === 0) {
-                     summary = '<p>Complete the game evaluation section first!</p>';
+                    summary = '<p>Complete the game evaluation section first!</p>';
                 } else {
+                    summary = '<ul>';
                     for (const game in gameEvaluations) {
                         const evalData = gameEvaluations[game];
                         summary += `<li>${game}: M:${evalData.mechanics || '-'}, A:${evalData.aesthetics || '-'}, U:${evalData.usability || '-'}</li>`;
@@ -1017,19 +952,37 @@
                 }
                 document.getElementById('your-eval-summary').innerHTML = summary;
             }
-            
-            // --- QUIZ FUNCTIONALITY ---
-            window.selectOption = (option, questionId) => {
-                document.getElementById(questionId + '-feedback').style.display = 'block';
-            };
-            
-            window.checkAnswer = (option, isCorrect) => {
-                const questionName = option.querySelector('input[type="radio"]').name;
-                const allRadiosInGroup = document.querySelectorAll(`input[name="${questionName}"]`);
 
-                if (allRadiosInGroup[0].disabled) {
-                    return;
+            function togglePrinciple(card) {
+                card.classList.toggle('expanded');
+            }
+
+            function saveEvaluation(game, criterion, value) {
+                if (!gameEvaluations[game]) gameEvaluations[game] = {};
+                gameEvaluations[game][criterion] = value;
+                updateCollaborationSummary();
+            }
+
+            function generateSummary() {
+                let summary = '<h3>Your Evaluation Summary:</h3><ul>';
+                for (const game in gameEvaluations) {
+                    const evalData = gameEvaluations[game];
+                    const total = (parseInt(evalData.mechanics || 0) + parseInt(evalData.aesthetics || 0) + parseInt(evalData.usability || 0));
+                    const count = (evalData.mechanics ? 1 : 0) + (evalData.aesthetics ? 1 : 0) + (evalData.usability ? 1 : 0);
+                    const avg = count > 0 ? (total / count).toFixed(1) : 0;
+                    summary += `<li><strong>${game.charAt(0).toUpperCase() + game.slice(1)}:</strong> Avg Score: ${avg}/5 (M:${evalData.mechanics || 'N/A'}, A:${evalData.aesthetics || 'N/A'}, U:${evalData.usability || 'N/A'})</li>`;
                 }
+                summary += '</ul>';
+                document.getElementById('evaluation-summary').innerHTML = summary;
+            }
+
+            function selectOption(feedbackId) {
+                document.getElementById(feedbackId).style.display = 'block';
+            }
+            
+            function checkAnswer(option, isCorrect) {
+                const radio = option.querySelector('input[type="radio"]');
+                if (radio.disabled) return;
                 
                 if (isCorrect) {
                     option.classList.add('correct');
@@ -1037,43 +990,26 @@
                 } else {
                     option.classList.add('incorrect');
                 }
-
-                allRadiosInGroup.forEach(radio => {
-                    radio.disabled = true;
-                    // Make parent label unclickable
-                    radio.parentElement.style.pointerEvents = 'none';
+                
+                document.querySelectorAll(`input[name="${radio.name}"]`).forEach(r => {
+                    r.disabled = true;
+                    r.parentElement.style.pointerEvents = 'none';
                 });
-            };
+            }
             
-            window.calculateScore = () => {
+            function calculateScore() {
                 const totalQuestions = document.querySelectorAll('#assessment .knowledge-check').length;
-                const percentage = Math.round((correctAnswers / totalQuestions) * 100);
-                let feedback = '';
-                if (percentage >= 75) {
-                    feedback = '🎉 Excellent work!';
-                } else if (percentage >= 50) {
-                    feedback = '👍 Good effort! Review the principles again.';
-                } else {
-                    feedback = '📚 Keep studying! You\'re getting there!';
-                }
-
-                document.getElementById('score-display').innerHTML = 
-                    `Your Score: ${correctAnswers}/${totalQuestions} (${percentage}%)<br>${feedback}`;
-            };
+                const percentage = totalQuestions > 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0;
+                const feedback = percentage >= 75 ? '🎉 Excellent work!' : (percentage >= 50 ? '👍 Good effort! Review the principles again.' : '📚 Keep studying! You\'re getting there!');
+                document.getElementById('score-display').innerHTML = `Your Score: ${correctAnswers}/${totalQuestions} (${percentage}%)<br>${feedback}`;
+            }
             
-            // --- PORTFOLIO & PDF ---
-            window.savePortfolio = () => {
+            function savePortfolio() {
                 alert('Portfolio saved!');
-            };
+            }
             
-            /**
-             * ✅ FIXED: Generates and saves a PDF of a specific content section.
-             * The original code had an issue calling the jsPDF library.
-             * This version correctly initializes the library.
-             */
-            window.saveSectionAsPDF = (sectionId, buttonElement) => {
-                // Correctly get the jsPDF constructor from the global jspdf object
-                const { jsPDF } = window.jspdf; 
+            function saveSectionAsPDF(sectionId, buttonElement) {
+                const { jsPDF } = window.jspdf;
                 const sectionElement = document.getElementById(sectionId);
                 const sectionTitle = sectionElement.querySelector('h2').innerText;
 
@@ -1084,14 +1020,9 @@
                 html2canvas(sectionElement, { scale: 2, useCORS: true }).then(canvas => {
                     const imgData = canvas.toDataURL('image/png');
                     const pdf = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
-
                     const pdfWidth = pdf.internal.pageSize.getWidth();
                     const pdfHeight = pdf.internal.pageSize.getHeight();
-                    const canvasWidth = canvas.width;
-                    const canvasHeight = canvas.height;
-                    const ratio = canvasWidth / pdfWidth;
-                    const imgHeight = canvasHeight / ratio;
-
+                    const imgHeight = canvas.height * pdfWidth / canvas.width;
                     let heightLeft = imgHeight;
                     let position = 0;
 
@@ -1099,36 +1030,67 @@
                     heightLeft -= pdfHeight;
 
                     while (heightLeft > 0) {
-                        position = position - pdfHeight;
+                        position -= pdfHeight;
                         pdf.addPage();
                         pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, imgHeight);
                         heightLeft -= pdfHeight;
                     }
-
                     pdf.save(`${sectionTitle.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`);
-
-                    buttonElement.innerHTML = originalButtonText;
-                    buttonElement.disabled = false;
                 }).catch(err => {
                     console.error("Error generating PDF:", err);
                     alert("Sorry, there was an error creating the PDF.");
+                }).finally(() => {
                     buttonElement.innerHTML = originalButtonText;
                     buttonElement.disabled = false;
                 });
-            };
+            }
             
             // --- INITIALIZATION ---
-            // Set up event listeners for tabs
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const sectionId = tab.getAttribute('data-section');
-                    showSection(sectionId);
+            function initializeEventListeners() {
+                // Tab navigation
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.addEventListener('click', () => showSection(tab.dataset.section));
                 });
-            });
 
-            // Initial setup on page load
-            showSection('intro'); // Show the first section and start its timer
+                // Save PDF buttons
+                document.querySelectorAll('.save-pdf-btn').forEach(button => {
+                    button.addEventListener('click', () => saveSectionAsPDF(button.dataset.sectionId, button));
+                });
+
+                // Intro "Quick Think" question
+                document.querySelectorAll('#intro .quiz-option').forEach(option => {
+                    option.addEventListener('click', () => selectOption('intro1-feedback'));
+                });
+
+                // Expandable principle cards
+                document.querySelectorAll('.principle-card').forEach(card => {
+                    card.addEventListener('click', () => togglePrinciple(card));
+                });
+
+                // Quiz answers for "Principles" and "Assessment" sections
+                document.querySelectorAll('#principles .quiz-option, #assessment .quiz-option').forEach(option => {
+                    const isCorrect = option.dataset.correct === 'true';
+                    option.addEventListener('click', () => checkAnswer(option, isCorrect));
+                });
+
+                // Game evaluation dropdowns
+                document.querySelectorAll('.eval-form select').forEach(select => {
+                    select.addEventListener('change', (event) => {
+                        const { game, criterion } = event.target.dataset;
+                        saveEvaluation(game, criterion, event.target.value);
+                    });
+                });
+
+                // Specific action buttons
+                document.getElementById('generate-summary-btn').addEventListener('click', generateSummary);
+                document.getElementById('save-portfolio-btn').addEventListener('click', savePortfolio);
+                document.getElementById('calculate-score-btn').addEventListener('click', calculateScore);
+            }
+
+            initializeEventListeners();
+            showSection('intro'); // Set the initial state
         });
     </script>
 </body>
 </html>
+
