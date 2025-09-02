@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adjusted Lesson: Game Design Principles</title>
+    
+    <!-- Libraries for PDF Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; line-height: 1.6; }
+        .container { max-width: 900px; margin: 20px auto; background: #fff; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
+        h1, h2, h3 { color: #333; margin-bottom: 15px; border-left: 5px solid #6a1b9a; padding-left: 10px; }
+        p { margin-bottom: 15px; color: #555; }
+        
+        /* Teacher Notes Section */
+        .teacher-notes { background-color: #fdfae6; border: 1px solid #f0e0a4; border-radius: 8px; padding: 15px; margin-bottom: 25px; }
+        .teacher-notes summary { font-weight: bold; color: #5c4b00; cursor: pointer; }
+        .teacher-notes ul { margin-left: 20px; margin-top: 10px; }
+
+        /* Section Styling */
+        .lesson-section { padding: 25px; margin-bottom: 25px; border-radius: 10px; background: #f9f9f9; border: 1px solid #eee; }
+
+        /* Interactive Elements */
+        .interactive-check { background-color: #eef7ff; border: 1px solid #cce4ff; border-radius: 8px; padding: 20px; margin-top: 20px; }
+        .interactive-check p { font-weight: bold; }
+        .interactive-check .options button { display: block; width: 100%; text-align: left; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 5px; background: #fff; cursor: pointer; transition: background-color 0.2s; }
+        .interactive-check .options button:hover { background-color: #f0f0f0; }
+        .feedback { margin-top: 10px; font-weight: bold; padding: 10px; border-radius: 5px; display: none; }
+        .feedback.correct { color: #155724; background-color: #d4edda; }
+        .feedback.incorrect { color: #721c24; background-color: #f8d7da; }
+
+        /* General Button Styling */
+        .action-btn { 
+            display: inline-block; 
+            text-decoration: none; 
+            background: #007bff; 
+            color: white; 
+            padding: 12px 20px; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            margin-top: 15px; 
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+        .action-btn:hover { background-color: #0056b3; }
+
+        /* Assistive Tech Button */
+        .read-aloud-btn { background-color: #6a1b9a; color: white; border: none; padding: 8px 12px; font-size: 12px; border-radius: 5px; cursor: pointer; margin-right: 10px; font-weight: bold; }
+        .read-aloud-btn:hover { background-color: #4a148c; }
+
+        /* Video & Mind Map */
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; margin-bottom: 20px; border-radius: 8px; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .mind-map { display: flex; flex-direction: column; align-items: center; }
+        .mind-map .central-topic { background: #6a1b9a; color: white; padding: 15px 25px; border-radius: 50px; margin-bottom: 20px; }
+        .mind-map .branches { display: flex; justify-content: space-around; width: 100%; flex-wrap: wrap; }
+        .mind-map .branch { background: #f3e5f5; border: 2px solid #ce93d8; padding: 15px; margin: 10px; border-radius: 10px; text-align: center; width: 45%; }
+        
+        /* Matching Game */
+        #matching-game { display: grid; grid-template-columns: 1fr 2fr; gap: 15px; align-items: center; }
+        #matching-game .principle { font-weight: bold; }
+        #matching-game select { width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc; }
+        #check-matches-btn { margin-top: 20px; padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+
+        /* Practical Task Section */
+        #practical-task { background-color: #fff9e6; border: 1px solid #ffecb3; }
+        #task-timer { text-align: center; margin: 20px 0; }
+        #timer-display { font-size: 2.5em; font-weight: bold; color: #6a1b9a; background: #f3e5f5; padding: 10px 20px; border-radius: 10px; display: inline-block; }
+
+        /* Simulated GDD Template */
+        #gdd-template-area {
+            width: 100%;
+            min-height: 450px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: vertical;
+        }
+
+        /* Self Assessment */
+        #self-assessment ul { list-style: none; }
+        #self-assessment li { margin-bottom: 15px; background: #f9f9f9; padding: 15px; border-radius: 8px; }
+        #self-assessment label { margin-right: 15px; cursor: pointer; }
+
+        /* Download PDF Button Section */
+        .download-section {
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #eef7ff;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="capture-area">
+        <h1>AL: Game Design Principles</h1>
+        
+        <details class="teacher-notes">
+            <summary>Teacher's Guide</summary>
+            <ul>
+                <li><strong>Environment:</strong> Ensure a predictable and quiet workspace.</li>
+                <li><strong>Executive Functioning:</strong> Verbally state the goal of each section before she begins. Use the timer in the practical task to help with time management.</li>
+                <li><strong>Processing:</strong> Use the "Read Aloud" buttons. Allow extra time. For the check-in questions, accept verbal answers to reduce the cognitive load of typing/writing.</li>
+                <li><strong>Peer Support:</strong> If working with a partner, pair Alexia with a supportive peer. Assign a concrete role, such as "Lead Designer" or "Story Writer" for the practical task.</li>
+            </ul>
+        </details>
+
+        <div id="intro" class="lesson-section">
+             <h2>1. What is Game Design?</h2>
+             <p>Welcome! Let's start by watching a short video that explains what game design is all about.</p>
+
+             <div class="video-container">
+             <iframe src="https://www.youtube.com/embed/G8AT01tuyrk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+             </div>
+             </div>
+             
+             <p><button onclick="speakText(this)" class="read-aloud-btn">▶️ Read Aloud</button>Game design is like being an architect for fun. It's the art of crafting the rules, challenges, and story of a game to create an enjoyable experience for the player. It's not about coding or drawing, but about the *ideas* behind the game.</p>
+             
+             <div class="interactive-check">
+                 <p>Check Your Understanding:</p>
+                 <span>What is the MAIN focus of a game designer?</span>
+                 <div class="options" id="q1_options">
+                     <button onclick="checkAnswer('q1', 'a')">A) Writing the computer code for the game.</button>
+                     <button onclick="checkAnswer('q1', 'b')">B) Creating the rules and player experience.</button>
+                     <button onclick="checkAnswer('q1', 'c')">C) Drawing the characters and environments.</button>
+                 </div>
+                 <div id="q1_feedback" class="feedback"></div>
+             </div>
+        </div>
+
+        <div id="principles" class="lesson-section">
+            <h2>2. Core Principles of Good Game Design</h2>
+            <p><button onclick="speakText(this)" class="read-aloud-btn">▶️ Read Aloud</button>Good games don't happen by accident. Designers follow important principles to make sure their games are fun and engaging. Let's look at a few key ones.</p>
+            
+            <h3>Matching Game!</h3>
+            <p>Match each principle to its correct definition below. Good luck!</p>
+            
+            <div id="matching-game">
+                <div class="principle" data-answer="clear-goals">Clear Goals</div>
+                <select id="select-clear-goals">
+                    <option value="">-- Select a definition --</option>
+                </select>
+
+                <div class="principle" data-answer="challenge">Balanced Challenge</div>
+                <select id="select-challenge">
+                    <option value="">-- Select a definition --</option>
+                </select>
+
+                <div class="principle" data-answer="feedback">Good Feedback</div>
+                <select id="select-feedback">
+                    <option value="">-- Select a definition --</option>
+                </select>
+
+                <div class="principle" data-answer="rules">Simple Rules</div>
+                <select id="select-rules">
+                    <option value="">-- Select a definition --</option>
+                </select>
+            </div>
+            <button id="check-matches-btn" onclick="checkMatches()">Check My Answers</button>
+        </div>
+        
+        <div id="role" class="lesson-section">
+            <h2>3. The Role of a Game Designer</h2>
+            <p>So, what does a game designer actually DO all day? It's a job with many different parts!</p>
+
+            <div class="mind-map">
+                <div class="central-topic">
+                    <h3>Game Designer</h3>
+                </div>
+                <div class="branches">
+                    <div class="branch"><strong>Brainstorms Ideas</strong><p>Thinks of the game's story, world, and characters.</p></div>
+                    <div class="branch"><strong>Writes the Rules</strong><p>Decides how the player wins, loses, and plays the game.</p></div>
+                    <div class="branch"><strong>Creates the 'Fun'</strong><p>Designs puzzles, challenges, and rewards to keep players engaged.</p></div>
+                    <div class="branch"><strong>Works in a Team</strong><p>Talks with artists, programmers, and writers to build the game.</p></div>
+                </div>
+            </div>
+
+            <div class="interactive-check">
+                <p>Check Your Understanding:</p>
+                <span>Which of these tasks is NOT part of a game designer's role?</span>
+                <div class="options" id="q2_options">
+                    <button onclick="checkAnswer('q2', 'a')">A) Deciding the story of the game.</button>
+                    <button onclick="checkAnswer('q2', 'b')">B) Fixing bugs in the computer code.</button>
+                    <button onclick="checkAnswer('q2', 'c')">C) Creating the rules for how to play.</button>
+                </div>
+                <div id="q2_feedback" class="feedback"></div>
+            </div>
+        </div>
+
+        <div id="practical-task" class="lesson-section">
+            <h2>4. Your Turn: Design a Game!</h2>
+            <p>Now it's your turn to be a game designer. Your task is to come up with an idea for a simple game and fill out a <strong>One-Page Game Design Document</strong>. Don't worry about coding or art - just focus on the ideas!</p>
+            
+            <p><strong>Your Task Steps:</strong></p>
+            <ol>
+                <li>Click the button below to create the template on this page.</li>
+                <li>Think of a simple game (e.g., a platformer, a puzzle game, a racing game).</li>
+                <li>Fill in each section of the template with your ideas.</li>
+            </ol>
+
+            <button id="create-template-btn" class="action-btn" onclick="createGDDTemplate()">
+                Create GDD Template
+            </button>
+
+            <div id="gdd-container" style="display: none;">
+                <h3>Game Design Document</h3>
+                <textarea id="gdd-template-area" placeholder="Fill in your game ideas here..."></textarea>
+            </div>
+
+            <div id="task-timer">
+                <h3>Focus Timer (15 Minutes)</h3>
+                <p>Use this timer to help you focus on the task. Click Start when you are ready.</p>
+                <div id="timer-display">15:00</div>
+                <button onclick="startTimer(15 * 60)">Start Timer</button>
+                <button onclick="pauseTimer()">Pause Timer</button>
+            </div>
+        </div>
+
+        <div id="self-assessment" class="lesson-section">
+              <h2>5. Final Check-in</h2>
+              <p>How are you feeling about these topics? This is just for you to think about your learning.</p>
+              <ul>
+                  <li>
+                      <strong>What Game Design is</strong><br>
+                      <label><input type="radio" name="check1"> ✅ I get it!</label>
+                      <label><input type="radio" name="check1"> 🤔 I need a little more help.</label>
+                      <label><input type="radio" name="check1"> ❓ I don't understand.</label>
+                  </li>
+                  <li>
+                      <strong>The Core Principles (Goals, Challenge, etc.)</strong><br>
+                      <label><input type="radio" name="check2"> ✅ I get it!</label>
+                      <label><input type="radio" name="check2"> 🤔 I need a little more help.</label>
+                      <label><input type="radio" name="check2"> ❓ I don't understand.</label>
+                  </li>
+                  <li>
+                      <strong>The Role of a Game Designer</strong><br>
+                      <label><input type="radio" name="check3"> ✅ I get it!</label>
+                      <label><input type="radio" name="check3"> 🤔 I need a little more help.</label>
+                      <label><input type="radio" name="check3"> ❓ I don't understand.</label>
+                  </li>
+              </ul>
+        </div>
+        
+        <!-- Section for downloading the PDF -->
+        <div class="download-section">
+            <h2>Download Your Work</h2>
+            <p>When you have completed all activities, click the button below to save all your responses as a PDF.</p>
+            <button id="download-pdf-btn" class="action-btn" style="background-color: #28a745;">Download Responses as PDF</button>
+        </div>
+
+    </div>
+
+    <script>
+        // --- QUIZ AND INTERACTIVITY ---
+        const answers = {
+            q1: 'b',
+            q2: 'b'
+        };
+
+        function checkAnswer(question, selected) {
+            const feedbackEl = document.getElementById(`${question}_feedback`);
+            const options = document.getElementById(`${question}_options`).getElementsByTagName('button');
+
+            for (let btn of options) {
+                btn.disabled = true; // Disable options after selection
+                btn.style.opacity = '0.6';
+            }
+
+            if (answers[question] === selected) {
+                feedbackEl.textContent = "Correct! Great job.";
+                feedbackEl.className = 'feedback correct';
+            } else {
+                feedbackEl.textContent = "Not quite. The correct answer is highlighted.";
+                feedbackEl.className = 'feedback incorrect';
+            }
+            feedbackEl.style.display = 'block';
+            
+            // Highlight the correct answer
+            for (let btn of options) {
+                if (btn.getAttribute('onclick').includes(`'${answers[question]}'`)) {
+                    btn.style.border = '2px solid #155724';
+                    btn.style.fontWeight = 'bold';
+                }
+            }
+        }
+        
+        // --- TEXT TO SPEECH ---
+        function speakText(button) {
+            // Find the paragraph immediately following the button's parent or the button itself
+            const contentToRead = button.nextElementSibling.textContent;
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(contentToRead);
+                window.speechSynthesis.cancel(); // Cancel any previous speech
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Sorry, your browser doesn't support text-to-speech.");
+            }
+        }
+
+        // --- MATCHING GAME LOGIC ---
+        const definitions = {
+            'clear-goals': 'The player always knows what they are supposed to do.',
+            'challenge': 'The game is not too hard and not too easy.',
+            'feedback': 'The game tells the player if they are doing well or not (e.g., points, sounds).',
+            'rules': 'The instructions are easy to learn and understand.'
+        };
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+        
+        function setupMatchingGame() {
+            const definitionOptions = Object.entries(definitions).map(([key, value]) => ({ key, value }));
+            shuffleArray(definitionOptions);
+
+            const selects = document.querySelectorAll('#matching-game select');
+            selects.forEach(select => {
+                // Clear existing options except the first one
+                while (select.options.length > 1) {
+                    select.remove(1);
+                }
+                // Add shuffled options
+                definitionOptions.forEach(opt => {
+                    const option = document.createElement('option');
+                    option.value = opt.key;
+                    option.textContent = opt.value;
+                    select.appendChild(option);
+                });
+                select.style.borderColor = '#ccc'; // Reset border color
+            });
+        }
+
+        function checkMatches() {
+            const selects = document.querySelectorAll('#matching-game select');
+            let allCorrect = true;
+            selects.forEach(select => {
+                const principleDiv = select.previousElementSibling;
+                const correctAnswer = principleDiv.dataset.answer;
+                if (select.value === correctAnswer) {
+                    select.style.border = '2px solid #28a745';
+                } else {
+                    select.style.border = '2px solid #dc3545';
+                    allCorrect = false;
+                }
+            });
+            if (allCorrect) {
+                alert("You got them all right! Fantastic!");
+            } else {
+                alert("Some answers are incorrect. The red boxes need another look. Try again!");
+            }
+        }
+        
+        // --- GDD TEMPLATE LOGIC ---
+        function createGDDTemplate() {
+            const templateContainer = document.getElementById('gdd-container');
+            const templateTextArea = document.getElementById('gdd-template-area');
+            const createBtn = document.getElementById('create-template-btn');
+
+            const templateContent = `One-Page Game Design Document
+---
+
+1. Game Title: [What is your game called?]
+
+2. Genre: [Is it a puzzle, action, racing game?]
+
+3. Player's Goal: [What does the player need to do to win? Be very clear! e.g., 'Reach the castle' or 'Solve all the riddles']
+
+4. Two Main Rules:
+   - Rule 1: [e.g., 'You can jump on enemies to defeat them']
+   - Rule 2: [e.g., 'Collecting a coin gives you 100 points']
+
+5. A Fun Feature: [What is one cool or fun thing in your game? e.g., 'A power-up that lets you fly for 10 seconds.']
+`;
+            templateTextArea.value = templateContent;
+            templateContainer.style.display = 'block';
+            createBtn.style.display = 'none'; // Hide button after creating template
+        }
+
+
+        // --- TIMER LOGIC ---
+        let timerInterval;
+        let timeRemaining;
+
+        function startTimer(duration) {
+            clearInterval(timerInterval);
+            timeRemaining = duration;
+            const display = document.getElementById('timer-display');
+            
+            timerInterval = setInterval(() => {
+                const minutes = Math.floor(timeRemaining / 60);
+                let seconds = timeRemaining % 60;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+                
+                display.textContent = `${minutes}:${seconds}`;
+                
+                if (--timeRemaining < 0) {
+                    clearInterval(timerInterval);
+                    display.textContent = "Time's Up!";
+                    alert("Time's up! Take a break.");
+                }
+            }, 1000);
+        }
+
+        function pauseTimer() {
+            clearInterval(timerInterval);
+        }
+
+        // --- PDF DOWNLOAD LOGIC ---
+        document.getElementById('download-pdf-btn').addEventListener('click', function () {
+            const { jsPDF } = window.jspdf;
+            const content = document.getElementById('capture-area');
+            const pdfButton = this;
+            
+            // Hide the button to prevent it from appearing in the PDF
+            pdfButton.style.visibility = 'hidden';
+
+            // Use html2canvas to capture the div
+            html2canvas(content, {
+                scale: 2, // Increase scale for better quality
+                useCORS: true,
+                onclone: (document) => {
+                    // This ensures textarea content is visible in the canvas
+                    const textareas = document.querySelectorAll('textarea');
+                    textareas.forEach(textarea => {
+                        const div = document.createElement('div');
+                        div.style.whiteSpace = 'pre-wrap';
+                        div.style.padding = '15px';
+                        div.style.border = '1px solid #ccc';
+                        div.style.borderRadius = '8px';
+                        div.style.fontFamily = "'Courier New', Courier, monospace";
+                        div.style.fontSize = "14px";
+                        div.style.minHeight = textarea.style.minHeight;
+                        div.textContent = textarea.value;
+                        textarea.parentNode.replaceChild(div, textarea);
+                    });
+                }
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvas.height;
+                
+                const ratio = canvasHeight / canvasWidth;
+                const imgHeight = pdfWidth * ratio;
+
+                let heightLeft = imgHeight;
+                let position = 0;
+
+                pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, imgHeight);
+                heightLeft -= pdfHeight;
+
+                while (heightLeft > 0) {
+                    position = -heightLeft;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, imgHeight);
+                    heightLeft -= pdfHeight;
+                }
+                
+                pdf.save('game-design-responses.pdf');
+
+                // Show the button again
+                pdfButton.style.visibility = 'visible';
+            });
+        });
+
+        // --- INITIALIZATION ---
+        window.onload = function() {
+            setupMatchingGame();
+        };
+
+    </script>
+</body>
+</html>
